@@ -27,7 +27,7 @@ def buy():
     req = {
         'sqlite_query':sql_update_query
     }
-    result = requests.post('http://127.0.0.1:5001/query',json=req)
+    result = requests.post('https://dos-bazar-catalog-server.herokuapp.com/query',json=req)
     if result.status_code == 201:
         data['amount'] = newAmount
         return jsonify(data) ,200
