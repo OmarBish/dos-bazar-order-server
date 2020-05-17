@@ -25,9 +25,11 @@ def buy():
     sql_update_query = "UPDATE books SET amount = "+ str(newAmount) +" WHERE id = "+ str(book_id)
 
     req = {
-        'sqlite_query':sql_update_query
+        'sqlite_query':sql_update_query,
+        'id':data['id']
     }
     result = requests.post('https://dos-bazar-catalog-master.herokuapp.com/query',json=req)
+    # result = requests.post('http://127.0.0.1:5000/query',json=req)
     if result.status_code == 201:
         data['amount'] = newAmount
         return jsonify(data) ,200
